@@ -13,7 +13,7 @@ export class SpaceBuilder {
     this.planets = [];
     this.planetList = [];
     this.sun = null;
-    this.loadPlanetData(planetPath);
+    this.loadPlanetData("../resources/planetInfo.json");
   }
 
   async loadPlanetData(url) {
