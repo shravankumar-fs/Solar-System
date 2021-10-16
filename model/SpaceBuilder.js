@@ -1,5 +1,5 @@
 import { Planet } from "./Planet.js";
-
+const PATH = "../resources/planetInfo.json";
 /**
  * Builds Space
  */
@@ -13,7 +13,7 @@ export class SpaceBuilder {
     this.planets = [];
     this.planetList = [];
     this.sun = null;
-    this.loadPlanetData("../resources/planetInfo.json");
+    this.loadPlanetData(PATH);
   }
 
   async loadPlanetData(url) {
