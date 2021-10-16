@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Mercury",
+    "details": {
+      "width": 1,
+      "color": "0xfb0d0d",
+      "position": {
+        "x": 4,
+        "y": -5,
+        "z": 10
+      }
+    }
+  },
+  {
+    "name": "Venus",
+    "details": {
+      "width": 2,
+      "color": "0xec645d",
+      "position": {
+        "x": -6,
+        "y": -8,
+        "z": -9
+      }
+    }
+  },
+  {
+    "name": "Earth",
+    "details": {
+      "width": 3,
+      "color": "0x3d5dff",
+      "position": {
+        "x": 12,
+        "y": 13,
+        "z": 25
+      }
+    }
+  },
+  {
+    "name": "Mars",
+    "details": {
+      "width": 2,
+      "color": "0xdf7a16",
+      "position": {
+        "x": -18,
+        "y": 18,
+        "z": -20
+      }
+    }
+  },
+  {
+    "name": "Jupiter",
+    "details": {
+      "width": 8,
+      "color": "0xca5f09",
+      "position": {
+        "x": -30,
+        "y": 30,
+        "z": -30
+      },
+      "ringWidth": 10,
+      "ringSpaceWidth": 0.09,
+      "ringColor": "0xf9c14d"
+    }
+  },
+  {
+    "name": "Saturn",
+    "details": {
+      "width": 5,
+      "color": "0x1f0909",
+      "position": {
+        "x": 35,
+        "y": -35,
+        "z": 35
+      },
+      "ringWidth": 12,
+      "ringSpaceWidth": 4,
+      "ringColor": "0x1f0909"
+    }
+  },
+  {
+    "name": "Uranus",
+    "details": {
+      "width": 5,
+      "color": "0xade1ff",
+      "position": {
+        "x": -43,
+        "y": 40,
+        "z": 23
+      },
+      "ringWidth": 8,
+      "ringSpaceWidth": 1,
+      "ringColor": "0xadf1f2"
+    }
+  },
+  {
+    "name": "Neptune",
+    "details": {
+      "width": 7,
+      "color": "0x1234ff",
+      "position": {
+        "x": -50,
+        "y": -40,
+        "z": 70
+      },
+      "ringWidth": 8,
+      "ringSpaceWidth": 0.4,
+      "ringColor": "0x1234ff"
+    }
+  }
+]

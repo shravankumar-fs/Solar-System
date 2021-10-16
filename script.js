@@ -1,6 +1,8 @@
-import { SpaceBuilder } from "./com.models/SpaceBuilder.js";
+import { SpaceBuilder } from "./model/SpaceBuilder.js";
 let scene, renderer, camera;
 let light;
+
+const PATH = "../resources/planetInfo.json";
 let solarSystem;
 let theta = 0;
 let ADD = 0.01;
@@ -17,13 +19,13 @@ let init = () => {
     1,
     1000
   );
-  camera.position.set(5, 10, 60);
+  camera.position.set(5, 10, 80);
   light = new THREE.PointLight(0xffffff, 10, 40, 3);
   light.position.set(0, 0, 0);
   scene.add(light);
 
   //create object
-  solarSystem = new SpaceBuilder(scene);
+  solarSystem = new SpaceBuilder(scene, PATH);
   solarSystem.buildSolarSystem();
   //create renderer
   renderer = new THREE.WebGLRenderer();
