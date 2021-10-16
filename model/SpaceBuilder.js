@@ -97,7 +97,7 @@ export class SpaceBuilder {
 
         this.planets.push(p);
       }
-    }, 600);
+    }, 300);
   }
   /**
    * Builds Solar System
