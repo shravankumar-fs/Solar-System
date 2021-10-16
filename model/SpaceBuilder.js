@@ -1,5 +1,5 @@
 import { Planet } from "./Planet.js";
-const PATH = "Solar-System/resources/planetInfo.json";
+const PATH = "./Solar-System/resources/planetInfo.json";
 /**
  * Builds Space
  */
