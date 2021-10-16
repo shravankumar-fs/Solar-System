@@ -8,7 +8,7 @@ export class SpaceBuilder {
    * Constructor
    * @param {THREE.Scene} scene
    */
-  constructor(scene, planetPath) {
+  constructor(scene) {
     this.scene = scene;
     this.planets = [];
     this.planetList = [];
