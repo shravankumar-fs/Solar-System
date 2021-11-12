@@ -35,7 +35,7 @@ export class SpaceBuilder {
         3,
         0.8
       );
-      let material = new THREE.MeshBasicMaterial(0x123456);
+      let material = new THREE.MeshBasicMaterial(0xffffff * Math.random());
       let p = new THREE.Mesh(geo, material);
       p.position.set(
         Math.random() > 0.5
@@ -45,8 +45,8 @@ export class SpaceBuilder {
           ? -800 + 1000 * Math.random()
           : 800 - 1000 * Math.random(),
         Math.random() > 0.5
-          ? -1800 + 1000 * Math.random()
-          : 50 - 1000 * Math.random()
+          ? -700 + 100 * Math.random()
+          : 700 - 100 * Math.random()
       );
       p.rotation.x += Math.PI / 2;
       this.scene.add(p);
@@ -57,23 +57,26 @@ export class SpaceBuilder {
    */
   createSun() {
     let geo = new THREE.SphereGeometry(10, 100, 100);
-    let material = new THREE.MeshPhongMaterial({
+    let material = new THREE.MeshBasicMaterial({
       map: new THREE.TextureLoader().load("resources/maps/sun.jpg"),
       shininess: 100,
     });
     this.sun = new THREE.Mesh(geo, material);
 
+    let light = new THREE.PointLight(0xffffff, 2, 200, 1);
+    light.position.set(0, 0, 0);
+    this.scene.add(light);
     this.scene.add(this.sun);
 
-    let light2 = new THREE.DirectionalLight(0xffffff, 2);
-    light2.position.set(10, 10, 10);
-    light2.target = this.sun;
+    let light2 = new THREE.DirectionalLight(0xffffff, 0.5);
+    light2.position.set(0, 0, 200);
     this.scene.add(light2);
+    light2.target = this.sun;
 
-    let light3 = new THREE.DirectionalLight(0xffffff, 2);
-    light3.position.set(0, 0, -10);
-    light3.target = this.sun;
+    let light3 = new THREE.DirectionalLight(0xffffff, 0.5);
+    light3.position.set(0, 0, -200);
     this.scene.add(light3);
+    light3.target = this.sun;
   }
 
   createPlanets() {

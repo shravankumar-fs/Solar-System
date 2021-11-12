@@ -2,7 +2,6 @@ import { SpaceBuilder } from "./model/SpaceBuilder.js";
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls";
 
 let scene, renderer, camera;
-let light;
 
 let solarSystem;
 let theta = 0;
@@ -22,9 +21,6 @@ let init = () => {
     1000
   );
   camera.position.set(5, 10, 100);
-  light = new THREE.PointLight(0xffffff, 10, 40, 3);
-  light.position.set(0, 0, 0);
-  scene.add(light);
 
   //create object
   solarSystem = new SpaceBuilder(scene);
@@ -48,10 +44,11 @@ let mainLoop = () => {
       ring.position.x = pl.x * Math.sin(theta);
       ring.position.y = pl.y * Math.cos(theta);
       ring.position.z = pl.z * Math.cos(theta);
-      ring.rotation.z += rotAngle + 5;
-      ring.rotation.y += rotAngle / 100;
+      // ring.rotation.z += rotAngle + 5;
+      ring.rotation.z += rotAngle + 1;
     }
   });
+  solarSystem.sun.rotation.y += rotAngle / 10;
 
   theta += ADD;
 
@@ -64,3 +61,9 @@ init();
 mainLoop();
 
 const orbitControls = new OrbitControls(camera, renderer.domElement);
+orbitControls.keys = {
+  LEFT: "ArrowLeft", //left arrow
+  UP: "ArrowUp", // up arrow
+  RIGHT: "ArrowRight", // right arrow
+  BOTTOM: "ArrowDown", // down arrow
+};

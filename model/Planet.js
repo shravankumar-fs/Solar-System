@@ -49,6 +49,8 @@ export class Planet {
     let m = new THREE.MeshPhongMaterial({
       map: new THREE.TextureLoader().load(this.ringMap),
       shininess: 100,
+      transparent: true,
+      opacity: 0.5,
     });
     let r = new THREE.Mesh(g, m);
     r.position.set(this.position.x, this.position.y, this.position.z);

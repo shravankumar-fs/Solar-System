@@ -17,7 +17,7 @@
       "width": 2,
       "map": "resources/maps/venus.jpg",
       "position": {
-        "x": -16,
+        "x": 16,
         "y": -16,
         "z": -16
       }
@@ -41,9 +41,9 @@
       "width": 2,
       "map": "resources/maps/mars.jpg",
       "position": {
-        "x": -23,
-        "y": 23,
-        "z": -23
+        "x": -22,
+        "y": -22,
+        "z": -22
       }
     }
   },
@@ -58,7 +58,7 @@
         "z": -32
       },
       "ringWidth": 10,
-      "ringSpaceWidth": 0.09,
+      "ringSpaceWidth": 1,
       "ringMap": "resources/maps/jupiter.jpg"
     }
   },
@@ -88,7 +88,7 @@
         "z": 60
       },
       "ringWidth": 8,
-      "ringSpaceWidth": 1,
+      "ringSpaceWidth": 2,
       "ringMap": "resources/maps/uranus.jpg"
     }
   },
@@ -103,7 +103,7 @@
         "z": 75
       },
       "ringWidth": 8,
-      "ringSpaceWidth": 0.4,
+      "ringSpaceWidth": 1,
       "ringMap": "resources/maps/neptune.jpg"
     }
   }
