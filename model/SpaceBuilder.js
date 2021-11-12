@@ -56,9 +56,9 @@ export class SpaceBuilder {
    * creates Sun
    */
   createSun() {
-    let geo = new THREE.SphereGeometry(3, 100, 100);
+    let geo = new THREE.SphereGeometry(10, 100, 100);
     let material = new THREE.MeshPhongMaterial({
-      color: 0xf5e314,
+      map: new THREE.TextureLoader().load("resources/maps/sun.jpg"),
       shininess: 100,
     });
     this.sun = new THREE.Mesh(geo, material);
@@ -66,12 +66,12 @@ export class SpaceBuilder {
     this.scene.add(this.sun);
 
     let light2 = new THREE.DirectionalLight(0xffffff, 2);
-    light2.position.set(5, 5, 5);
+    light2.position.set(10, 10, 10);
     light2.target = this.sun;
     this.scene.add(light2);
 
     let light3 = new THREE.DirectionalLight(0xffffff, 2);
-    light3.position.set(-5, -5, 5);
+    light3.position.set(0, 0, -10);
     light3.target = this.sun;
     this.scene.add(light3);
   }
@@ -82,7 +82,7 @@ export class SpaceBuilder {
         let details = planet.details;
         let p = new Planet(
           details.width,
-          +details.color,
+          details.map,
           new THREE.Vector3(
             details.position.x,
             details.position.y,
@@ -90,7 +90,7 @@ export class SpaceBuilder {
           ),
           details.ringWidth,
           details.ringSpaceWidth,
-          +details.ringColor
+          details.ringMap
         );
         this.scene.add(p.getPlanet());
         if (p.getRing()) this.scene.add(p.getRing());

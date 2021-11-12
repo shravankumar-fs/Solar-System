@@ -2,23 +2,22 @@ export class Planet {
   /**
    *
    * @param {number} width
-   * @param {Hexadecimal} color
+   * @param {String} map
    * @param {Vector} position
    * @param {number} ringWidth
    * @param {number} ringSpaceWidth
-   * @param {Hexadecimal} ringColor
+   * @param {String} ringMap
    */
-  constructor(width, color, position, ringWidth, ringSpaceWidth, ringColor) {
+  constructor(width, map, position, ringWidth, ringSpaceWidth, ringMap) {
     this.width = width;
-    this.color = color;
+    this.map = map;
     this.position = position;
     this.x = position.x;
     this.z = position.z;
     this.y = position.y;
     this.ringWidth = ringWidth;
     this.ringSpaceWidth = ringSpaceWidth;
-    this.ringColor = ringColor;
-
+    this.ringMap = ringMap;
     this.planet = this.initPlanet();
     if (this.ringWidth) {
       this.ring = this.initRing();
@@ -33,8 +32,9 @@ export class Planet {
   initPlanet() {
     let geo = new THREE.SphereGeometry(this.width, 100, 100);
     let material = new THREE.MeshPhongMaterial({
-      color: this.color,
+      map: new THREE.TextureLoader().load(this.map),
       shininess: 100,
+      side: THREE.DoubleSide,
     });
     let p = new THREE.Mesh(geo, material);
     p.position.set(this.position.x, this.position.y, this.position.z);
@@ -47,7 +47,7 @@ export class Planet {
   initRing() {
     let g = new THREE.TorusGeometry(this.ringWidth, this.ringSpaceWidth, 2, 30);
     let m = new THREE.MeshPhongMaterial({
-      color: this.ringColor,
+      map: new THREE.TextureLoader().load(this.ringMap),
       shininess: 100,
     });
     let r = new THREE.Mesh(g, m);
