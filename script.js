@@ -79,3 +79,20 @@ mainLoop();
 //   }
 //   orbitControls.enabled = true;
 // });
+
+orbitControls.listenToKeyEvents(document.body);
+orbitControls.keys = {
+  LEFT: "ArrowLeft", //left arrow
+  UP: "ArrowUp", // up arrow
+  RIGHT: "ArrowRight", // right arrow
+  BOTTOM: "ArrowDown", // down arrow
+};
+orbitControls.mouseButtons = {
+  LEFT: THREE.MOUSE.ROTATE,
+  MIDDLE: THREE.MOUSE.DOLLY,
+  RIGHT: THREE.MOUSE.PAN,
+};
+orbitControls.touches = {
+  ONE: THREE.TOUCH.ROTATE,
+  TWO: THREE.TOUCH.DOLLY_PAN,
+};
