@@ -5,6 +5,15 @@ body {
   margin: 0;
   height: 100vh;
   width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
+#solarSystem {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  transform: scale(1.2) translateX(30px);
+  filter: blur(20px);
 }
 .info {
   position: absolute;
@@ -33,7 +42,10 @@ h2 {
   font-size: 38px;
   transition: all 0.3s linear;
 }
-
+canvas:focus + .info,
+canvas:active + .info {
+  display: none;
+}
 h4 {
   font-size: 18px;
 }

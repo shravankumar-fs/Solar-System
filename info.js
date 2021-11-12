@@ -14,8 +14,15 @@ let i = setInterval(() => {
     h2.innerHTML += "&nbsp;";
     idx++;
   } else h2.innerHTML += sName[idx++];
+  let blurVal = 20 - idx * 3;
+  if (blurVal < 0) {
+    document.getElementById("solarSystem").style.filter = `none`;
+  } else
+    document.getElementById("solarSystem").style.filter = `blur(${
+      20 - idx * 2
+    }px)`;
   if (idx == sName.length) clearInterval(i);
-}, 300);
+}, 200);
 
 h4.innerText = "A Frontend Developer from India 🇮🇳";
 setTimeout(() => {

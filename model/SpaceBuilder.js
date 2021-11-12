@@ -59,7 +59,6 @@ export class SpaceBuilder {
     let geo = new THREE.SphereGeometry(10, 100, 100);
     let material = new THREE.MeshBasicMaterial({
       map: new THREE.TextureLoader().load("resources/maps/sun.jpg"),
-      shininess: 100,
     });
     this.sun = new THREE.Mesh(geo, material);
 

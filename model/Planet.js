@@ -31,9 +31,10 @@ export class Planet {
 
   initPlanet() {
     let geo = new THREE.SphereGeometry(this.width, 100, 100);
-    let material = new THREE.MeshPhongMaterial({
+    let material = new THREE.MeshPhysicalMaterial({
       map: new THREE.TextureLoader().load(this.map),
-      shininess: 100,
+      roughness: 1,
+      metalness: 0.5,
       side: THREE.DoubleSide,
     });
     let p = new THREE.Mesh(geo, material);

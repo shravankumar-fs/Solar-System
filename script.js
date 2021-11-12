@@ -2,7 +2,10 @@ import { SpaceBuilder } from "./model/SpaceBuilder.js";
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls";
 
 let scene, renderer, camera;
-
+let raycaster = new THREE.Raycaster();
+let pointer = new THREE.Vector2();
+pointer.x = pointer.y = -1;
+const solarSystemCanvas = document.getElementById("solarSystem");
 let solarSystem;
 let theta = 0;
 let rotAngle = 0.01;
@@ -26,10 +29,11 @@ let init = () => {
   solarSystem = new SpaceBuilder(scene);
   solarSystem.buildSolarSystem();
   //create renderer
-  renderer = new THREE.WebGLRenderer();
-  renderer.setSize(window.innerWidth, window.innerHeight);
 
-  document.body.appendChild(renderer.domElement);
+  renderer = new THREE.WebGLRenderer({
+    canvas: solarSystemCanvas,
+  });
+  renderer.setSize(window.innerWidth, window.innerHeight);
 };
 let mainLoop = () => {
   solarSystem.getPlanets().forEach((pl) => {
@@ -51,19 +55,27 @@ let mainLoop = () => {
   solarSystem.sun.rotation.y += rotAngle / 10;
 
   theta += ADD;
-
   renderer.render(scene, camera);
 
   requestAnimationFrame(mainLoop);
 };
 
 init();
+const orbitControls = new OrbitControls(camera, renderer.domElement);
 mainLoop();
 
-const orbitControls = new OrbitControls(camera, renderer.domElement);
-orbitControls.keys = {
-  LEFT: "ArrowLeft", //left arrow
-  UP: "ArrowUp", // up arrow
-  RIGHT: "ArrowRight", // right arrow
-  BOTTOM: "ArrowDown", // down arrow
-};
+// solarSystemCanvas.addEventListener("click", (e) => {
+//   orbitControls.enabled = false;
+
+//   pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
+//   pointer.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+//   raycaster.setFromCamera(pointer, camera);
+
+//   const intersects = raycaster.intersectObject(solarSystem.getPlanets());
+//   for (let i = 0; i < intersects.length; i++) {
+//     intersects[i].object.material.color.set(0xff0000);
+//     console.log(intersects[i]);
+//   }
+//   orbitControls.enabled = true;
+// });
