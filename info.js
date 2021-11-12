@@ -17,7 +17,7 @@ let i = setInterval(() => {
   if (idx == sName.length) clearInterval(i);
 }, 300);
 
-h4.innerText = "A Frontend Developer from India";
+h4.innerText = "A Frontend Developer from India 🇮🇳";
 setTimeout(() => {
   document.body.appendChild(info);
 }, 1000);
