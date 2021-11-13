@@ -47,9 +47,11 @@ export class Planet {
    */
   initRing() {
     let g = new THREE.TorusGeometry(this.ringWidth, this.ringSpaceWidth, 2, 30);
-    let m = new THREE.MeshPhongMaterial({
+    let m = new THREE.MeshPhysicalMaterial({
       map: new THREE.TextureLoader().load(this.ringMap),
-      shininess: 100,
+      roughness: 1,
+      metalness: 0.5,
+      side: THREE.DoubleSide,
       transparent: true,
       opacity: 0.5,
     });
