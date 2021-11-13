@@ -8,7 +8,7 @@ pointer.x = pointer.y = -1;
 const solarSystemCanvas = document.getElementById("solarSystem");
 let solarSystem;
 let theta = 0;
-let rotAngle = 0.01;
+let rotAngle = 0.005;
 let ADD = 0.01;
 
 let init = () => {
