@@ -21,7 +21,17 @@ let i = setInterval(() => {
     document.getElementById("solarSystem").style.filter = `blur(${
       20 - idx * 2
     }px)`;
-  if (idx == sName.length) clearInterval(i);
+  if (idx == sName.length) {
+    clearInterval(i);
+    h2.innerHTML = sName
+      .map((letter, idx) => {
+        if (letter === ".") {
+          letter = "&nbsp;";
+        }
+        return `<span style="transition-delay:${idx * 50}ms">${letter}</span>`;
+      })
+      .join("");
+  }
 }, 200);
 
 h4.innerText = "A Frontend Developer from India 🇮🇳";

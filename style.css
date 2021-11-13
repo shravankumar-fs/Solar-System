@@ -12,6 +12,8 @@ body {
   position: absolute;
   top: -20px;
   left: -20px;
+  top: -20px;
+  left: -20px;
   transform: scale(1.2) translateX(30px);
   filter: blur(20px);
 }
@@ -31,18 +33,15 @@ h2,
 h4 {
   font-weight: 600;
   letter-spacing: 1.5px;
-  width: fit-content;
-}
-h2::before {
-  position: absolute;
-  top: -10px;
+  width: 280px;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 10px 20px;
+  border-radius: 20px 0;
+  text-align: center;
 }
 h2 {
-  position: relative;
   font-size: 38px;
   transition: all 0.3s linear;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px 20px;
 }
 canvas:focus + .info,
 canvas:active + .info {
@@ -50,8 +49,6 @@ canvas:active + .info {
 }
 h4 {
   font-size: 18px;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 6px 12px;
 }
 h2::selection,
 h4::selection {

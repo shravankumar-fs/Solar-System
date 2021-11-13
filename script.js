@@ -62,6 +62,7 @@ let mainLoop = () => {
 
 init();
 const orbitControls = new OrbitControls(camera, renderer.domElement);
+orbitControls.target.set(0, 0, 0);
 mainLoop();
 
 // solarSystemCanvas.addEventListener("click", (e) => {
