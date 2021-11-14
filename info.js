@@ -1,10 +1,15 @@
 const info = document.createElement("div");
 info.classList.add("info");
 let sName = "Shravan.Kumar".toUpperCase().split("");
+let about = "A Frontend Developer from India &";
+let aboutAppend = "🇮🇳";
 let div1 = document.createElement("div");
 let h2 = document.createElement("h2");
 let h4 = document.createElement("h4");
-
+const delays = {
+  h2: 30,
+  h4: 20,
+};
 info.appendChild(div1);
 div1.appendChild(h2);
 div1.appendChild(h4);
@@ -28,13 +33,30 @@ let i = setInterval(() => {
         if (letter === ".") {
           letter = "&nbsp;";
         }
-        return `<span style="transition-delay:${idx * 50}ms">${letter}</span>`;
+        return `<span style="transition-delay:${
+          idx * delays.h2
+        }ms">${letter}</span>`;
       })
       .join("");
   }
 }, 200);
 
-h4.innerText = "A Frontend Developer from India 🇮🇳";
+h4.innerHTML = about
+  .split("")
+  .map((letter, idx) => {
+    if (letter === " ") {
+      letter = "&nbsp;";
+    } else if (letter === "&") {
+      return `<span style="transition-delay:${
+        idx * delays.h4
+      }ms">${aboutAppend}</span>`;
+    }
+    return `<span style="transition-delay:${
+      idx * delays.h4
+    }ms">${letter}</span>`;
+  })
+  .join("");
+
 setTimeout(() => {
   document.body.appendChild(info);
 }, 1000);
