@@ -42,10 +42,6 @@ h4 {
 }
 h2 {
   font-size: 38px;
-  /* transition: all 0.3s linear; */
-  position: absolute;
-  top: -100px;
-  left: 0;
 }
 
 h4 {
