@@ -1,5 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text&display=swap");
-
+:root {
+  --width-gen: 350px;
+  --width-res: 240px;
+  --overlay-bg: rgba(0, 0, 0, 0.5);
+  --main-text-color: whitesmoke;
+  --side-text-color: #0fa;
+  --text-shadow-color: rgba(0, 139, 139, 0.4);
+  --text-shadow: 0px 2px 5px var(--text-shadow-color);
+  --border-bottom-style: 2px ridge var(--text-shadow-color);
+}
+* {
+  transition: all 0.6s linear;
+}
 body {
   font-family: "Big Shoulders Stencil Text", cursive;
   margin: 0;
@@ -7,6 +19,7 @@ body {
   width: 100vw;
   position: relative;
   overflow: hidden;
+  perspective: 500px;
 }
 #solarSystem {
   position: absolute;
@@ -19,54 +32,233 @@ body {
 }
 .info {
   position: absolute;
-  top: 50%;
-  left: 10%;
-  transform: translateY(-50%);
+  top: 40%;
+  left: 7%;
+  transform: translateY(-30%);
   display: flex;
   flex-direction: column;
   justify-content: left;
   align-items: center;
   background-color: transparent;
-  color: #fff;
+  color: var(--side-text-color);
+  text-shadow: var(--text-shadow);
 }
 h2,
 h4 {
   font-weight: 600;
   letter-spacing: 1.5px;
-  width: 280px;
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 10px 20px;
+  width: var(--width-gen);
+  background-color: var(--overlay-bg);
   border-radius: 20px 0;
   text-align: center;
   cursor: pointer;
 }
 h2 {
   font-size: 38px;
+  letter-spacing: 2px;
+  color: var(--main-text-color);
+  padding: 15px 20px;
 }
 
 h4 {
   font-size: 18px;
+  letter-spacing: 1px;
+  border-bottom: var(--border-bottom-style);
+  padding: 10px 20px;
 }
-h2::selection,
-h4::selection {
+*::selection {
   text-decoration: none;
 }
 h2 span {
   display: inline-block;
   transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: animate 1s ease-in-out;
 }
+
 h2:hover > span {
-  transform: translateY(-20px);
+  transform: translateY(-10px);
 }
 h4 span {
   display: inline-block;
   transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
 }
 h4:hover > span {
-  transform: translateY(20px);
+  animation: animate 0.3s ease-in-out;
 }
-@media (max-width: 400) {
+
+.flag {
+  font-size: 26px;
+  transform: translate(0, -10%);
+  animation: none;
+}
+
+.detailsBtn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  text-shadow: 0px 2px 5px white;
+  font-weight: 600;
+  width: 100%;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 20px;
+  letter-spacing: 2px;
+  border-radius: 20px;
+  transition: all 0.1s linear, background-color 0.5s linear,
+    text-shadow 0.5s linear;
+  border-bottom: var(--border-bottom-style);
+  cursor: pointer;
+  margin-top: 10px;
+  position: relative;
+}
+.detailsBtn::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translate(0, -50%);
+  background-color: var(--text-shadow-color);
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  animation: button-scale 1s infinite;
+}
+.detailsBtn.hide {
+  background-color: transparent;
+  border: none;
+  color: var(--main-text-color);
+  width: var(--width-gen);
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 2px;
+  border-radius: 20px;
+  animation: none;
+}
+.detailsBtn.hide::after {
+  display: none;
+}
+.detailsBtn:hover {
+  background-color: var(--text-shadow-color);
+  text-shadow: none;
+}
+@keyframes button-scale {
+  70%,
+  100% {
+    background-color: var(--side-text-color);
+  }
+}
+.types,
+.skills,
+.contacts {
+  width: calc(var(--width-gen));
+  letter-spacing: 2px;
+  background-color: var(--overlay-bg);
+  font-size: 16px;
+
+  border-bottom: 2px ridge rgb(0, 139, 139, 0.4);
+  padding: 10px 10px;
+  margin: 15px 0px;
+
+  border-radius: 20px 0;
+  text-align: center;
+  cursor: pointer;
+}
+.skills,
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.types {
+  word-break: keep-all;
+}
+.types span {
+  display: inline-block;
+}
+.types:hover > span {
+  animation: animate 0.3s ease-in-out;
+}
+.skill {
+  background-color: var(--text-shadow-color);
+  font-size: 14px;
+  text-transform: uppercase;
+  text-shadow: 0 0 5px black;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: var(--main-text-color);
+}
+.skill:hover {
+  animation: animate-skill 1s ease-in-out;
+}
+@keyframes animate-skill {
+  0% {
+    background: linear-gradient(30deg, darkcyan 24%, white 25%, darkcyan 30%);
+  }
+  25% {
+    background: linear-gradient(30deg, darkcyan 34%, white 35%, darkcyan 40%);
+    transform: scale(0.98);
+  }
+  50% {
+    background: linear-gradient(30deg, darkcyan 54%, white 55%, darkcyan 60%);
+    transform: scale(1.1);
+  }
+  75% {
+    background: linear-gradient(30deg, darkcyan 64%, white 65%, darkcyan 70%);
+    transform: scale(0.98);
+  }
+  100% {
+    background: linear-gradient(30deg, darkcyan 84%, white 85%, darkcyan 90%);
+    transform: scale(1);
+  }
+}
+.contacts {
+  font-size: 20px;
+}
+.contact {
+  margin: 0px 10px;
+}
+.contact a {
+  text-decoration: none;
+  font-size: 24px;
+  color: var(--main-text-color);
+}
+.contact:hover {
+  transform: scale(1.2);
+  color: yellowgreen;
+}
+
+@keyframes animate {
+  to {
+    transform: rotateX(360deg) rotateY(360deg) translateY(-5px);
+  }
+}
+@media (max-width: 500px) {
   canvas {
     transform: rotate(90deg) scale(0.9);
+  }
+  h2,
+  h4 {
+    width: var(--width-res);
+  }
+  h2 {
+    font-size: 28px;
+  }
+  h4,
+  .types,
+  .skills,
+  .contacts {
+    font-size: 12px;
+    width: var(--width-res);
+  }
+  .contact {
+    font-size: 12px;
+  }
+  .contact a {
+    font-size: 16px;
+  }
+  * {
+    letter-spacing: 1px;
   }
 }

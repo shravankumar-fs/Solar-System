@@ -11,6 +11,14 @@ let theta = 0;
 let rotAngle = 0.005;
 let ADD = 0.01;
 
+window.addEventListener("resize", onWindowResize, false);
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  render();
+}
+
 let init = () => {
   //create scene
   scene = new THREE.Scene();
@@ -55,10 +63,14 @@ let mainLoop = () => {
   solarSystem.sun.rotation.y += rotAngle / 10;
 
   theta += ADD;
-  renderer.render(scene, camera);
+  render();
 
   requestAnimationFrame(mainLoop);
 };
+
+function render() {
+  renderer.render(scene, camera);
+}
 
 init();
 const orbitControls = new OrbitControls(camera, renderer.domElement);
