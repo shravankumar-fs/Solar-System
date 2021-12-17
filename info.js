@@ -60,7 +60,7 @@ h4.innerHTML = about
 
 let getDetails = () => {
   let button = document.createElement("button");
-  button.innerText = "More_Details/";
+  button.innerText = "More Details/";
   button.classList.add("detailsBtn");
   div1.appendChild(button);
   button.addEventListener("click", () => {
@@ -132,7 +132,7 @@ let getContactMe = () => {
   contacts.innerHTML = ` Lets connect on 
     <span class="contact"><a target="_blank" href="https://twitter.com/shravankumarui"><i class="fab fa-twitter"></i></a></span>
     <span class="contact"><a target="_blank"  href="https://www.linkedin.com/in/shravan-kumar-udupa/"><i class="fab fa-linkedin-in"></i></a></span>
-    <span class="contact"><a target="_blank" href="mailto:shravankumar.fs.dev@gmail.com"><i class="far fa-envelope"></i></a></span>
+    <span class="contact"><a target="_blank" href="mailto:shravankumar.fs.dev@gmail.com"><i class="fas fa-envelope"></i></a></span>
   `;
   contacts.id = "contacts";
   contacts.classList.add("contacts");
@@ -143,3 +143,15 @@ setTimeout(() => {
   document.body.appendChild(info);
   getDetails();
 }, 1000);
+
+document.body.addEventListener("mousemove", (e) => {
+  document.body
+    .querySelectorAll(".customCursor")
+    .forEach((item) => item.remove());
+  let cursor = document.createElement("div");
+  cursor.style.top = e.pageY + "px";
+  cursor.style.left = e.pageX + "px";
+  cursor.classList.add("customCursor");
+  document.body.appendChild(cursor);
+  cursor.style.animation = "cursorfade 1s ease-out infinite";
+});

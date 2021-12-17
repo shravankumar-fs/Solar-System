@@ -11,6 +11,7 @@
 }
 * {
   transition: all 0.6s linear;
+  cursor: none;
 }
 body {
   font-family: "Big Shoulders Stencil Text", cursive;
@@ -108,7 +109,6 @@ h4:hover > span {
   transition: all 0.1s linear, background-color 0.5s linear,
     text-shadow 0.5s linear;
   border-bottom: var(--border-bottom-style);
-  cursor: pointer;
   margin-top: 10px;
   position: relative;
 }
@@ -163,7 +163,7 @@ h4:hover > span {
 
   border-radius: 20px 0;
   text-align: center;
-  cursor: pointer;
+  animation: add-up 0.5s ease-in-out;
 }
 .skills,
 .contacts {
@@ -173,6 +173,16 @@ h4:hover > span {
 }
 .types {
   word-break: keep-all;
+}
+@keyframes add-up {
+  from {
+    transform: translateY(100%) rotateX(90deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%) rotateX(0deg);
+    opacity: 1;
+  }
 }
 .types span {
   display: inline-block;
@@ -223,9 +233,18 @@ h4:hover > span {
   text-decoration: none;
   font-size: 24px;
   color: var(--main-text-color);
+  border-radius: 20px;
 }
 .contact:hover {
   transform: scale(1.2);
+}
+.contact a:hover {
+  background: linear-gradient(
+    -55deg,
+    transparent 40%,
+    orange 50%,
+    transparent 60%
+  );
   color: yellowgreen;
 }
 
@@ -260,5 +279,25 @@ h4:hover > span {
   }
   * {
     letter-spacing: 1px;
+  }
+}
+.customCursor {
+  /* background: radial-gradient(rgb(0, 100, 0) 60%, whitesmoke); */
+  background-image: url("./resources/astro.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 100;
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  transform: rotateY(180deg);
+}
+@keyframes cursorfade {
+  0%,
+  70% {
+    background-image: url("./resources/astro.png");
+  }
+  100% {
+    background-image: url("./resources/astro2.png");
   }
 }
