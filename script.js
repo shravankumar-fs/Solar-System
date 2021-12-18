@@ -43,6 +43,9 @@ let init = () => {
   });
   renderer.setSize(window.innerWidth, window.innerHeight);
 };
+init();
+render();
+const orbitControls = new OrbitControls(camera, renderer.domElement);
 let mainLoop = () => {
   solarSystem.getPlanets().forEach((pl) => {
     let p = pl.getPlanet();
@@ -61,6 +64,7 @@ let mainLoop = () => {
     }
   });
   solarSystem.sun.rotation.y += rotAngle / 10;
+  orbitControls.update();
 
   theta += ADD;
   render();
@@ -72,9 +76,9 @@ function render() {
   renderer.render(scene, camera);
 }
 
-init();
-const orbitControls = new OrbitControls(camera, renderer.domElement);
 orbitControls.target.set(0, 0, 0);
+orbitControls.maxDistance = 400;
+orbitControls.minDistance = 20;
 mainLoop();
 
 // solarSystemCanvas.addEventListener("click", (e) => {
