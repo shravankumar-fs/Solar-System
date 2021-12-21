@@ -76,7 +76,8 @@ h2 span {
   animation: animate 1s ease-in-out;
 }
 
-h2:hover > span {
+h2:hover > span,
+h2:active > span {
   transform: translateY(-10px);
 }
 h4 span {
@@ -84,7 +85,8 @@ h4 span {
   transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   position: relative;
 }
-h4:hover > span {
+h4:hover > span,
+h4:active > span {
   animation: animate 0.3s ease-in-out;
 }
 
@@ -139,7 +141,8 @@ h4:hover > span {
 .detailsBtn.hide::after {
   display: none;
 }
-.detailsBtn:hover {
+.detailsBtn:hover,
+.detailsBtn:active {
   background-color: var(--text-shadow-color);
   text-shadow: none;
 }
@@ -187,7 +190,8 @@ h4:hover > span {
 .types span {
   display: inline-block;
 }
-.types:hover > span {
+.types:hover > span,
+.types:active > span {
   animation: animate 0.3s ease-in-out;
 }
 .skill {
@@ -199,7 +203,8 @@ h4:hover > span {
   border-radius: 10px;
   color: var(--main-text-color);
 }
-.skill:hover {
+.skill:hover,
+.skill:active {
   animation: animate-skill 1s ease-in-out;
 }
 @keyframes animate-skill {
@@ -235,10 +240,12 @@ h4:hover > span {
   color: var(--main-text-color);
   border-radius: 20px;
 }
-.contact:hover {
+.contact:hover,
+.contact:active {
   transform: scale(1.2);
 }
-.contact a:hover {
+.contact a:hover,
+.contact a:active {
   background: linear-gradient(
     -55deg,
     transparent 40%,
@@ -253,9 +260,50 @@ h4:hover > span {
     transform: rotateX(360deg) rotateY(360deg) translateY(-5px);
   }
 }
-@media (max-width: 500px) {
-  canvas {
-    transform: rotate(90deg) scale(0.9);
+.customCursor {
+  background-image: url("./resources/astro.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 100;
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  transform: rotateY(180deg);
+}
+@keyframes cursorfade {
+  0%,
+  70% {
+    background-image: url("./resources/astro.png");
+  }
+  100% {
+    background-image: url("./resources/astro2.png");
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  * {
+    cursor: pointer;
+    text-decoration: none;
+    user-select: none;
+  }
+  ::selection {
+    text-decoration: none;
+    user-select: none;
+  }
+  body {
+    max-width: fit-content;
+    height: 100vh;
+  }
+  #solarSystem {
+    max-height: 100vh;
+  }
+  .info {
+    position: absolute;
+    top: 20%;
+    transform: translateX(10%) !important;
+  }
+  .customCursor {
+    display: none;
   }
   h2,
   h4 {
@@ -279,25 +327,5 @@ h4:hover > span {
   }
   * {
     letter-spacing: 1px;
-  }
-}
-.customCursor {
-  /* background: radial-gradient(rgb(0, 100, 0) 60%, whitesmoke); */
-  background-image: url("./resources/astro.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  z-index: 100;
-  position: absolute;
-  height: 30px;
-  width: 30px;
-  transform: rotateY(180deg);
-}
-@keyframes cursorfade {
-  0%,
-  70% {
-    background-image: url("./resources/astro.png");
-  }
-  100% {
-    background-image: url("./resources/astro2.png");
   }
 }
