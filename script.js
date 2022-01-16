@@ -23,6 +23,7 @@ let init = () => {
   //create scene
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x070211);
+  scene.fog = new THREE.Fog(0x00dddd, 50, 1000);
 
   //create camera
   camera = new THREE.PerspectiveCamera(
