@@ -1,5 +1,5 @@
-import { Planet } from "./Planet.js";
-const PATH = "./resources/planetInfo.json";
+import { Planet } from './Planet.js';
+const PATH = './resources/planetInfo.json';
 /**
  * Builds Space
  */
@@ -56,9 +56,9 @@ export class SpaceBuilder {
    * creates Sun
    */
   createSun() {
-    let geo = new THREE.SphereGeometry(10, 100, 100);
+    let geo = new THREE.SphereBufferGeometry(10, 128, 128);
     let material = new THREE.MeshBasicMaterial({
-      map: new THREE.TextureLoader().load("resources/maps/sun.jpg"),
+      map: new THREE.TextureLoader().load('resources/maps/sun.jpg'),
     });
     this.sun = new THREE.Mesh(geo, material);
 

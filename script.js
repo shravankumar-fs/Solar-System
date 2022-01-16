@@ -1,17 +1,17 @@
-import { SpaceBuilder } from "./model/SpaceBuilder.js";
-import { OrbitControls } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls";
+import { SpaceBuilder } from './model/SpaceBuilder.js';
+import { OrbitControls } from 'https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls';
 
 let scene, renderer, camera;
 let raycaster = new THREE.Raycaster();
 let pointer = new THREE.Vector2();
 pointer.x = pointer.y = -1;
-const solarSystemCanvas = document.getElementById("solarSystem");
+const solarSystemCanvas = document.getElementById('solarSystem');
 let solarSystem;
 let theta = 0;
 let rotAngle = 0.005;
 let ADD = 0.01;
 
-window.addEventListener("resize", onWindowResize, false);
+window.addEventListener('resize', onWindowResize, false);
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
@@ -46,6 +46,15 @@ let init = () => {
 init();
 render();
 const orbitControls = new OrbitControls(camera, renderer.domElement);
+let count = solarSystem.sun.geometry.attributes.position.count;
+const position_clone = JSON.parse(
+  JSON.stringify(solarSystem.sun.geometry.attributes.position.array)
+);
+const normals_clone = JSON.parse(
+  JSON.stringify(solarSystem.sun.geometry.attributes.normal.array)
+);
+const damping = 0.02;
+const sun_pos = solarSystem.sun.position.clone();
 let mainLoop = () => {
   solarSystem.getPlanets().forEach((pl) => {
     let p = pl.getPlanet();
@@ -64,6 +73,39 @@ let mainLoop = () => {
     }
   });
   solarSystem.sun.rotation.y += rotAngle / 10;
+
+  const now = Date.now() / 300;
+  for (let i = 0; i < count; i++) {
+    const ux = solarSystem.sun.geometry.attributes.uv.getX(i) * Math.PI * 16;
+    const uy = solarSystem.sun.geometry.attributes.uv.getY(i) * Math.PI * 16;
+    //current height of vertextwave
+    const xangle = ux + now;
+    const xsin = Math.sin(xangle) * 0.05;
+    const yangle = uy + now;
+    const ycos = Math.cos(yangle) * 0.05;
+    //indices
+    const ix = i * 3;
+    const iy = i * 3 + 1;
+    const iz = i * 3 + 2;
+
+    //new pos
+
+    solarSystem.sun.geometry.attributes.position.setX(
+      i,
+      position_clone[ix] + normals_clone[ix] * (xsin + ycos)
+    );
+    solarSystem.sun.geometry.attributes.position.setY(
+      i,
+      position_clone[iy] + normals_clone[iy] * (xsin + ycos)
+    );
+    solarSystem.sun.geometry.attributes.position.setZ(
+      i,
+      position_clone[iz] + normals_clone[iz] * (xsin + ycos)
+    );
+  }
+  solarSystem.sun.geometry.computeVertexNormals();
+  solarSystem.sun.geometry.attributes.position.needsUpdate = true;
+
   orbitControls.update();
 
   theta += ADD;
