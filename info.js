@@ -84,7 +84,7 @@ let getTypes = () => {
     ^Responsive E-Commerce Site? 
     ^Gallery to feature your artwork? 
     ^Perfect Landing Page to get you deals? 
-    ^You are in the right place!
+    ^^You are in the right place!
     ^I will build your sites with Creative Animations, 3D rendered Websites(Threejs) that convert.`
     .split('')
     .map((letter, idx) => {
@@ -105,15 +105,15 @@ let getSkills = () => {
   let skills = document.createElement('div');
   let skillSet = [
     '',
-    'Javascript ES6',
-    'Angular 6/7',
     'Three.js',
+    'ReactJS',
+    'Angular 6/7',
+    'Javascript ES6',
     'CSS3 & HTML',
-    'Core Java & Spring boot',
   ];
-  skills.innerHTML = `Major skills&nbsp;&nbsp;:&nbsp;&nbsp;[ ${skillSet.reduce(
+  skills.innerHTML = `${skillSet.reduce(
     (a, b) => a + "<span class='skill'>" + b + '</span>'
-  )} ] `;
+  )} `;
   skills.id = 'skills';
   skills.classList.add('skills');
   return skills;
@@ -121,7 +121,7 @@ let getSkills = () => {
 
 let getContactMe = () => {
   let contacts = document.createElement('div');
-  contacts.innerHTML = ` Lets connect on 
+  contacts.innerHTML = ` Lets talk on 
     <span class="contact"><a target="_blank" href="https://twitter.com/shravankumarui"><i class="fab fa-twitter"></i></a></span>
     <span class="contact"><a target="_blank"  href="https://www.linkedin.com/in/shravan-kumar-udupa/"><i class="fab fa-linkedin-in"></i></a></span>
     <span class="contact"><a target="_blank" href="mailto:shravankumar.fs.dev@gmail.com"><i class="fas fa-envelope"></i></a></span>
