@@ -2,7 +2,6 @@ const info = document.createElement('div');
 info.classList.add('info');
 let sName = 'Shravan.Kumar'.toUpperCase().split('');
 let about = 'I am a Frontend Developer';
-// let div1 = document.createElement('div');
 let h2 = document.createElement('h2');
 let h4 = document.createElement('h4');
 const delays = {
@@ -83,9 +82,9 @@ let getTypes = () => {
   types.innerHTML = `Do you seek a cool portfolio? 
     ^Responsive E-Commerce Site? 
     ^Gallery to feature your artwork? 
-    ^Perfect Landing Page to get you deals? 
-    ^^You are in the right place!
-    ^I will build your sites with Creative Animations, 3D rendered Websites(Threejs) that convert.`
+    ^Perfect Landing Page to get deals? 
+    ^^Then you are in the right place!
+    ^I will build your sites with Creative Animations, 3D rendered Websites (Threejs) that convert.`
     .split('')
     .map((letter, idx) => {
       if (letter === ' ') {
